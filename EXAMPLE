@@ -1,0 +1,18 @@
+# EXAMPLE FILE FOR GENERATING CSRS
+# ================================
+# One hostname per line, first hostname is the Common Name (CN) on the CSR.
+# Indentation is entirely optional and is ignored by the script.
+# An empty line indicates that the next line (if any) is not part of the current CSR,
+# and, as such, should be used as first hostname for the next CSR.
+
+# First hostname, will be CN
+example.com
+	# Secundary hostnames, will be aliases
+	www.example.com
+	mail.example.com
+	ftp.example.com
+
+example.org 
+	www.example.org
+	mail.example.org
+	ftp.example.org
