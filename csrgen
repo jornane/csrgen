@@ -1,9 +1,12 @@
 #!/bin/bash
 # CONFIGURATION
-C="XX"
-O="Default Organisation"
-OU="Default OU"
-SUBJECT=/C=${C}/O=${O}/OU=${OU}/CN=
+. csrgen.conf
+
+if ! test "x$SUBJECT" == "x" -a "x$SUBJECT" == "x/C=XX/O=Default Organisation/OU=Default OU/CN="
+then
+	echo -e 'Oops! you forgot to edit \033[1mcsrgen.conf\033[0m\n' > /dev/stderr
+	exit 1
+fi
 
 # INITIAL VALUES
 CN=
