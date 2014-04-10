@@ -9,18 +9,24 @@ Comes with a basic openssl.conf included for your convenience.
 
 ## Useful commands
 ### Verify CSR
-`openssl req -noout -text -verify -in "${CSR_FILE}"`
+```bash
+openssl req -noout -text -verify -in "${CSR_FILE}"
+```
 
 Takes a csr file and gives readable detailed output.
 Search for *Subject:* and *X509v3 Subject Alternative Name:*
 
 ### Verify signed certificate (for when you get them back)
-`openssl x509 -text -noout -in "${CERT_FILE}"`
+```bash
+openssl x509 -text -noout -in "${CERT_FILE}"
+```
 
 Takes a signed certificate and shows detailed readable contents.
 
 ### Convert to p12
-`openssl pkcs12 -export -out "${OUT_FILE}" -inkey "${KEY_FILE}" -in "${CERT_FILE}" -certfile "${CHAIN_FILE}"`
+```bash
+openssl pkcs12 -export -out "${OUT_FILE}" -inkey "${KEY_FILE}" -in "${CERT_FILE}" -certfile "${CHAIN_FILE}"`
+```
 
 Takes private key, certificate and chain and generates a .p12 file which will contain them all.
 This is useful for using the certificate in systems which require .p12, such as Windows Server.
