@@ -8,6 +8,11 @@ Input can be provided as stdin or by providing the filename as argument.
 Comes with a basic openssl.conf included for your convenience.
 
 ## Useful commands
+In the following commands, you must replace the variables with the filename.
+All files end with .pem and start with the same string as the variable, but in lowercase.
+
+So, for example, `${CSR_FILE}` will become `csr-example.com.pem`.
+
 ### Verify CSR
 ```bash
 openssl req -noout -text -verify -in "${CSR_FILE}"
