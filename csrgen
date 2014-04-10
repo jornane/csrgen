@@ -34,7 +34,7 @@ do
 					-out "${CN}.ssl/csr-${CN}.pem" \
 					-config openssl.cnf \
 					-subj "${SUBJECT}${CN}" \
-						> "${CN}.ssl/csr-${CN}.log" \
+						> "${CN}.ssl/log-${CN}.txt" \
 				2>&1 \
 				&& echo -e "\r[\033[32m ok \033[0m]" > /dev/stderr \
 				|| { echo -e "\r[\033[31mfail\033[0m]\n" > /dev/stderr; exit 1; } \
