@@ -30,6 +30,15 @@ When run from the same directory where you ran csrgen from,
 this will generate a csrs.tgz in the current directory.
 The resulting file will contain all csr files.
 
+### Generate self-signed certificate (to use while you wait for the officially signed ones to arrive)
+```bash
+openssl x509 -req -days 30 -in "${CSR_FILE}" -signkey "${KEY_FILE}" -out "${CERT_FILE}"
+```
+
+This will give you a certificate file which is valid for one month.
+That should be plenty of time to wait for the real deal.
+If you think you will need more time, you can change the `-days 30` parameter to something bigger.
+
 ### Verify signed certificate (for when you get them back)
 ```bash
 openssl x509 -text -noout -in "${CERT_FILE}"
