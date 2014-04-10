@@ -14,7 +14,7 @@ CN=
 ALT=
 altCount=0
 csrCount=0
-{ cat $@; echo; } | while read line
+{ cat $@; echo; echo; } | while read line
 do
 	[ "${line:0:1}" == "#" ] && continue
 	if [ "$line" == "" ]
