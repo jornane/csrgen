@@ -41,7 +41,8 @@ do
 				|| { echo -e "\r[\033[31mfail\033[0m]\n" > /dev/stderr; exit 1; } \
 
 				csrCount=$(expr $csrCount + 1)
-		rmdir "${CN}.ssl" > /dev/null 2>&1
+				rmdir "${CN}.ssl" > /dev/null 2>&1
+				openssl version > "${CN}.ssl/openssl.version"
 			fi
 		fi
 		CN=
