@@ -21,13 +21,13 @@ do
 	then
 		if [ "$CN" != "" ]
 		then
+			echo -en "[\033[36mbusy\033[0m] \033[1m${CN}\033[0m (${altCount})" > /dev/stderr
 			[ -e "$CN.ssl" ] && rmdir "$CN.ssl" > /dev/null 2>&1
 			if [ -e "$CN.ssl" ]
 			then
-				echo Directory $CN already exists > /dev/stderr
+				echo -e "\r[\033[35mexst\033[0m]" > /dev/stderr
 			else
 				export ALTNAME="$ALT"
-				echo -n ${CN} > /dev/stderr
 				mkdir "${CN}.ssl"
 				openssl req -batch -new -nodes \
 					-keyout "${CN}.ssl/key-${CN}.pem" \
@@ -36,8 +36,8 @@ do
 					-subj "${SUBJECT}${CN}" \
 						> "${CN}.ssl/csr-${CN}.log" \
 				2>&1 \
-				&& echo ": ok (${altCount} names)" > /dev/stderr \
-				|| exit 1 \
+				&& echo -e "\r[\033[32m ok \033[0m]" > /dev/stderr \
+				|| { echo -e "\r[\033[31mfail\033[0m]\n" > /dev/stderr; exit 1; } \
 
 				csrCount=$(expr $csrCount + 1)
 		rmdir "${CN}.ssl" > /dev/null 2>&1
