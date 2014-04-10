@@ -21,25 +21,26 @@ do
 	then
 		if [ "$CN" != "" ]
 		then
-			if [ -e "$CN" ]
+			[ -e "$CN.ssl" ] && rmdir "$CN.ssl" > /dev/null 2>&1
+			if [ -e "$CN.ssl" ]
 			then
 				echo Directory $CN already exists > /dev/stderr
 			else
 				export ALTNAME="$ALT"
 				echo -n ${CN} > /dev/stderr
-				mkdir "${CN}"
+				mkdir "${CN}.ssl"
 				openssl req -batch -new -nodes \
-					-keyout "${CN}/key-${CN}.pem" \
-					-out "${CN}/csr-${CN}.pem" \
+					-keyout "${CN}.ssl/key-${CN}.pem" \
+					-out "${CN}.ssl/csr-${CN}.pem" \
 					-config openssl.cnf \
 					-subj "${SUBJECT}${CN}" \
-						> "${CN}/csr-${CN}.log" \
+						> "${CN}.ssl/csr-${CN}.log" \
 				2>&1 \
 				&& echo ": ok (${altCount} names)" > /dev/stderr \
 				|| exit 1 \
 
 				csrCount=$(expr $csrCount + 1)
-		rmdir "${CN}" > /dev/null 2>&1
+		rmdir "${CN}.ssl" > /dev/null 2>&1
 			fi
 		fi
 		CN=
