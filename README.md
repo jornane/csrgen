@@ -21,6 +21,15 @@ openssl req -noout -text -verify -in "${CSR_FILE}"
 Takes a csr file and gives readable detailed output.
 Search for *Subject:* and *X509v3 Subject Alternative Name:*
 
+### Generate .tgz with all requests
+```bash
+tar zc */csr-*.pem > csrs.tgz
+```
+
+When run from the same directory where you ran csrgen from,
+this will generate a csrs.tgz in the current directory.
+The resulting file will contain all csr files.
+
 ### Verify signed certificate (for when you get them back)
 ```bash
 openssl x509 -text -noout -in "${CERT_FILE}"
