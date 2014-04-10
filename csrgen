@@ -13,7 +13,6 @@ fi
 CN=
 ALT=
 altCount=0
-totalCount=0
 csrCount=0
 { cat $@; echo; } | while read line
 do
@@ -53,7 +52,6 @@ do
 		[ "$CN" == "" ] && CN="$trimline"
 		[ "$ALT" == "" ] && ALT="DNS:$trimline" || ALT="$ALT","DNS:$trimline"
 		altCount=$(expr $altCount + 1)
-		totalCount=$(expr $totalCount + 1)
 	fi
 done
 
