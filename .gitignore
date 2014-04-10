@@ -1,2 +1,3 @@
 *.csrgen
 *.ssl
+csrgen.conf
