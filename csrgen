@@ -1,8 +1,8 @@
 #!/bin/bash
 # CONFIGURATION
-[ -f csrgen.conf ] && . csrgen.conf
+[ -f csrgen.conf ] && source csrgen.conf
 
-if ! test "x$SUBJECT" == "x" -a "x$SUBJECT" == "x/C=XX/O=Default Organisation/OU=Default OU/CN="
+if test "x$SUBJECT" == "x" -o "x$SUBJECT" == "x/C=XX/O=Default Organisation/OU=Default OU/CN="
 then
 	[ -f csrgen.conf.default -a ! -f csrgen.conf ] && cp csrgen.conf{.default,}
 	echo -e 'Oops! you forgot to edit \033[1mcsrgen.conf\033[0m\n' > /dev/stderr
