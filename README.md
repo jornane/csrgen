@@ -2,7 +2,7 @@
 Generate certificate signing requests in batch.
 Requires input with hostnames with one hostname per line.
 Empty line means new signing request.
-Read `EXAMPLE` for more information.
+Read `EXAMPLE.csrgen` for more information.
 Input can be provided as stdin or by providing the filename as argument.
 
 Comes with a basic openssl.conf included for your convenience.

@@ -4,3 +4,4 @@ csrgen.conf
 *.tgz
 *.tar
 *.gz
+!EXAMPLE.csrgen
