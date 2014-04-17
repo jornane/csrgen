@@ -39,6 +39,11 @@ This will give you a certificate file which is valid for one month.
 That should be plenty of time to wait for the real deal.
 If you think you will need more time, you can change the `-days 30` parameter to something bigger.
 
+Alternatively, you can make a self-signed certificate without a CSR.
+```bash
+openssl req -x509 -new -key "${KEY_FILE}" -out "${CERT_FILE}"
+```
+
 ### Verify signed certificate (for when you get them back)
 ```bash
 openssl x509 -text -noout -in "${CERT_FILE}"
