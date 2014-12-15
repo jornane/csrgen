@@ -16,11 +16,11 @@ commonName	= Common Name (hostname, IP, or your name)
 commonName_max	= 64
 
 [ req ]
-default_bits	= 4096
 default_md	= sha512
 string_mask	= nombstr
 distinguished_name	= req_distinguished_name
 req_extensions	= v3_req
+default_bits	= 2048
 
 [ v3_ca ]
 basicConstraints	= CA:TRUE
